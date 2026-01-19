@@ -20,13 +20,19 @@ RSpec.describe Region, type: :model do
   end
 
   it "validates uniqueness of name" do
-    should validate_uniqueness_of(:name).case_insensitive(false)
+    should validate_uniqueness_of(:name).case_insensitive
   end
 
   it "has a string representation that is its name" do
     name = 'Mt. Hood'
     region = Region.new(name: name)
     result = region.to_s
+    expect(result).to eq('Mt. Hood')
+  end
+
+  it "finds or creates unspecified region" do
+    region = Region.unspecified
+    expect(region.name).to eq('Unspecified')
   end
 
 end

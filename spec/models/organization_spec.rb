@@ -136,7 +136,7 @@ RSpec.describe Organization, type: :model do
   end
 
   it "validates uniqueness of email" do
-    should validate_uniqueness_of(:email).case_insensitive(false)
+    should validate_uniqueness_of(:email).case_insensitive
   end
 
   it "validates length of name" do
@@ -144,11 +144,34 @@ RSpec.describe Organization, type: :model do
   end
 
   it "validates uniqueness of name" do
-    should validate_uniqueness_of(:name).case_insensitive(false)
+    should validate_uniqueness_of(:name).case_insensitive
   end
 
   it "validates length of description" do
     should validate_length_of(:description).is_at_most(1020).on(:create)
+  end
+
+  it "approves organization" do
+    org = Organization.new
+    org.approve
+    expect(org.status).to eq('approved')
+  end
+
+  it "rejects organization" do
+    org = Organization.new
+    org.reject
+    expect(org.status).to eq('rejected')
+  end
+
+  it "sets default status on new record" do
+    org = Organization.new
+    org.set_default_status
+    expect(org.status).to eq('submitted')
+  end
+
+  it "returns name as string representation" do
+    org = Organization.new(name: 'Test Org')
+    expect(org.to_s).to eq('Test Org')
   end
 
 end
