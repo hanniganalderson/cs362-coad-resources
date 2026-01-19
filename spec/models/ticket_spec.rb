@@ -49,4 +49,32 @@ RSpec.describe Ticket, type: :model do
   it "belongs to resource_category" do
     should belong_to(:resource_category)
   end
+
+  it "validates presence of name" do
+    should validate_presence_of(:name)
+  end
+
+  it "validates presence of phone" do
+    should validate_presence_of(:phone)
+  end
+
+  it "validates presence of region_id" do
+    should validate_presence_of(:region_id)
+  end
+
+  it "validates presence of resource_category_id" do
+    should validate_presence_of(:resource_category_id)
+  end
+
+  it "validates length of name" do
+    should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+  end
+
+  it "validates length of description" do
+    should validate_length_of(:description).is_at_most(1020).on(:create)
+  end
+
+  it "validates phone is plausible" do
+    should allow_value('541 541 5415').for(:phone)
+  end
 end

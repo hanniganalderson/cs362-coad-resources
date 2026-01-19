@@ -11,6 +11,18 @@ RSpec.describe Region, type: :model do
     should have_many(:tickets)
   end
 
+  it "validates presence of name" do
+    should validate_presence_of(:name)
+  end
+
+  it "validates length of name" do
+    should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+  end
+
+  it "validates uniqueness of name" do
+    should validate_uniqueness_of(:name).case_insensitive(false)
+  end
+
   it "has a string representation that is its name" do
     name = 'Mt. Hood'
     region = Region.new(name: name)
