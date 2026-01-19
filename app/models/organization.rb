@@ -1,3 +1,4 @@
+# Represents a disaster relief organization that can apply to join COAD and help fulfill tickets
 class Organization < ApplicationRecord
 
   attr_accessor :agreement_one, :agreement_two, :agreement_three, :agreement_four, :agreement_five, :agreement_six, :agreement_seven, :agreement_eight

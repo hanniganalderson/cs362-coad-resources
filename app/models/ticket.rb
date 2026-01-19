@@ -1,3 +1,4 @@
+# Represents a help request from someone in need
 class Ticket < ApplicationRecord
 
   belongs_to :region

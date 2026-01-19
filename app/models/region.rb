@@ -1,3 +1,4 @@
+# Represents a geographic area where help is needed
 class Region < ApplicationRecord
 
   has_many :tickets

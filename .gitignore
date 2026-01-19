@@ -38,3 +38,8 @@
 
 .ruby-gemset
 .ruby-version
+
+# Agent files - private context (not to be pushed to GitHub)
+/agent_files
+../agent_files
+
