@@ -12,4 +12,9 @@ require 'rails_helper'
 # end
 RSpec.describe TicketsHelper, type: :helper do
 
+  it "formats phone number to US format" do
+    result = helper.format_phone_number('541 541 5415')
+    expect(result).to eq('+15415415415')
+  end
+
 end
